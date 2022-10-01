@@ -8,7 +8,7 @@ const createSchemaTodos = Joi.object().keys({
 });
 
 const updateSchemaTodos = Joi.object().keys({
-  title: Joi.string().min(4).required(),
+  title: Joi.string().optional(),
   priority: Joi.string().optional(),
   activity_group_id: Joi.number().optional(),
   is_active: Joi.boolean(),

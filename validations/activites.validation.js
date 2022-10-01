@@ -6,7 +6,7 @@ const createSchemaActivites = Joi.object({
 });
 
 const updateSchemaActivites = Joi.object().keys({
-  title: Joi.string().required(),
+  title: Joi.string(),
   email: Joi.string().email(),
 });
 
