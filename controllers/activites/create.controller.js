@@ -10,7 +10,7 @@ module.exports = async (req, res, next) => {
       created_at: moment().format("YYYY-MM-DD HH:mm:ss"),
       updated_at: moment().format("YYYY-MM-DD HH:mm:ss")
     };
-  
+    console.log(JSON.stringify(payload));
     const data = await activityModel.create(payload);
 
     return res.status(200).json({
