@@ -13,7 +13,7 @@ module.exports = async (req, res, next) => {
     console.log(JSON.stringify(payload));
     const data = await activityModel.create(payload);
 
-    return res.status(200).json({
+    return res.status(201).json({
       status: "Success",
       message: "Success",
       data

@@ -26,7 +26,7 @@ module.exports = async (req, res, next) => {
   
     const data = await todoModel.create(payload);
 
-    return res.status(200).json({
+    return res.status(201).json({
       status: "Success",
       message: "Success",
       data

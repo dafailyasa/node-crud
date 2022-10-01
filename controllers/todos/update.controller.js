@@ -17,12 +17,17 @@ module.exports = async (req, res, next) => {
         where: {id}
       }
     );
-    
-    let data = null;
-    if(result > 0) {
-      data =  await todoModel.findOne({where: { id } });
-    }
 
+    if(!result){
+      return res.status(404).json({
+        status: "Not Found",
+        message: `Todos with ID ${id} Not Found`,
+        data: {}
+      });
+    }
+    
+    const data =  await todoModel.findOne({where: { id } });
+    
     return res.status(200).json({
       status: "Success",
       message: "Success",
