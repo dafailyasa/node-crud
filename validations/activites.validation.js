@@ -1,7 +1,7 @@
 const Joi = require("joi");
 
 const createSchemaActivites = Joi.object({
-  title: Joi.string().required(),
+  title: Joi.string().required().messages({ "any.required": "title cannot be null" }),
   email: Joi.string().email(),
 });
 
