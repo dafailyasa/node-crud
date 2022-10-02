@@ -3,7 +3,11 @@ exports.bodyValidation = (schema) => (req, res, next) => {
     error
   } = schema.validate(req.body);
   if (error) {
-    return res.status(400).json({messages: error.details[0].message});
+    return res.status(400).json({
+      status: "Bad Request",
+      message: error.details[0].message,
+      data: {},
+    });
   } else {
     next();
   }

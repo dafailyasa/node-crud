@@ -5,6 +5,14 @@ const moment = require('moment');
 
 module.exports = async (req, res, next) => {
   try {
+    if(req.body.activity_group_id == null || req.body.activity_group_id?.trim() ==  ''){
+      return res.status(400).json({
+        status:"Bad Request",
+        message: "activity_group_id cannot be null",
+        data: {},
+      });
+    };
+
     const payload = {
       title: req.body.title,
       priority: req.body.priority,

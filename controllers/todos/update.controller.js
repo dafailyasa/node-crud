@@ -11,7 +11,7 @@ module.exports = async (req, res, next) => {
     if(!isExist){
       return res.status(404).json({
         status: "Not Found",
-        message: `Todos with ID ${id} Not Found`,
+        message: `Todo with ID ${id} Not Found`,
         data: {}
       });
     }
