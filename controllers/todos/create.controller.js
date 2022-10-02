@@ -5,16 +5,6 @@ const moment = require('moment');
 
 module.exports = async (req, res, next) => {
   try {
-    const activity_group_id = req.body.activity_group_id;
-    const activity = await activityModel.findOne({where: {id: activity_group_id}});
-    if(!activity) {
-      return res.status(404).json({
-        status: "Not Found",
-        message: `Activity with ID ${activity_group_id} Not Found`,
-        data: {}
-      });
-    }
-
     const payload = {
       title: req.body.title,
       priority: req.body.priority,

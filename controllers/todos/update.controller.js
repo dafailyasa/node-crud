@@ -6,32 +6,29 @@ module.exports = async (req, res, next) => {
   try {
     const id = req.params.id;
 
-    const payload = {
-      title: req.body.title,
-      email: req.body.email,
-      updated_at: moment().format("YYYY-MM-DD HH:mm:ss")
-    };
+    const isExist =  await todoModel.findOne({where: { id } });
 
-    const result = await todoModel.update(payload, 
-      {
-        where: {id}
-      }
-    );
-
-    if(!result){
+    if(!isExist){
       return res.status(404).json({
         status: "Not Found",
         message: `Todos with ID ${id} Not Found`,
         data: {}
       });
     }
-    
-    const data =  await todoModel.findOne({where: { id } });
-    
+
+    const payload = {
+      title: req.body.title,
+      email: req.body.email,
+      updated_at: moment().format("YYYY-MM-DD HH:mm:ss")
+    };
+
+    await todoModel.update(payload, {where: {id}});
+    const data = await todoModel.findOne({where: { id } });
+
     return res.status(200).json({
       status: "Success",
       message: "Success",
-      data
+      data,
     });
 
   } catch (err) {

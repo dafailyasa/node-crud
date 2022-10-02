@@ -20,12 +20,4 @@ db.sequelize = sequelize;
 db.activites = require("./activites.model")(sequelize, Sequelize);
 db.todos = require("./todos.model")(sequelize, Sequelize);
 
-db.activites.hasMany(db.todos, { as: "todos" });
-
-db.todos.belongsTo(db.activites, {
-  foreignKey: "activity_group_id",
-});
-
-db.todos.removeAttribute('activiteId'); // ✨✨✨
-
 module.exports = db;

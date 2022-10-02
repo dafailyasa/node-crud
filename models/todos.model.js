@@ -19,6 +19,10 @@ module.exports = (sequelize, Sequelize) => {
       type: Sequelize.STRING,
       field: "priority",
     },
+    activity_group_id: {
+      type: Sequelize.INTEGER,
+      field: "activity_group_id",
+    },
     created_at:{
       type: Sequelize.DATE, 
       field: "created_at",
@@ -35,6 +39,12 @@ module.exports = (sequelize, Sequelize) => {
   },
   {
     timestamps: false,
+    indexes:[
+      {
+        unique: false,
+        fields:['activity_group_id']
+      }
+     ]
   });
   return todos;
 };
